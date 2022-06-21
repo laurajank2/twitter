@@ -17,6 +17,7 @@
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -27,23 +28,11 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    [self fetchTweets];
     
-    // Get timeline
-    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
-        if (tweets) {
-            NSLog(@"😎😎😎 Successfully loaded home timeline");
-//            for (NSDictionary *dictionary in tweets) {
-//                NSString *text = dictionary[@"text"];
-//                NSLog(@"%@", text);
-//            }
-            self.arrayOfTweets = (NSMutableArray*) tweets;
-            [self.tableView reloadData];
-            
-        } else {
-            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
-        }
-        
-    }];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,14 +55,39 @@
     cell.date.text = tweet.createdAtString;
     cell.userName.text = tweet.user.screenName;
     cell.postContent.text = tweet.text;
-//    NSString *URLString = tweet.user.profilePicture;
-//    NSURL *url = [NSURL URLWithString:URLString];
-//    NSData *urlData = [NSData dataWithContentsOfURL:url];
-//    cell.userPhoto.image = nil;
-//    [cell.userPhoto setImageWithURL:urlData];
-    //cell.textLabel.text = movie[@"title"];
+    //[cell.likeButton setTitle:[NSString stringWithFormat:@"%d",tweet.favoriteCount] forState:UIControlStateNormal];
+    NSString *URLString = tweet.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    //cell.userPhoto.image = urlData;
+    [cell.userPhoto setImageWithURL:url];
     
     return cell;
+}
+
+// Makes a network request to get updated data
+ // Updates the tableView with the new data
+ // Hides the RefreshControl
+- (void)fetchTweets {
+
+    // Get timeline
+    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+//            for (NSDictionary *dictionary in tweets) {
+//                NSString *text = dictionary[@"text"];
+//                NSLog(@"%@", text);
+//            }
+            self.arrayOfTweets = (NSMutableArray*) tweets;
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+            
+        } else {
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+        
+    }];
+    
 }
 
 /*
