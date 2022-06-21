@@ -93,7 +93,7 @@
 
 - (void)didTweet:(Tweet *)tweet {
     [self.arrayOfTweets addObject:tweet];
-    [self.tableView reloadData];
+    [self fetchTweets];
     
 }
 

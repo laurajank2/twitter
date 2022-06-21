@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.composeTweet.placeholder = @"How are you?";
+    self.composeTweet.placeholder = @"Type Tweet here";
     self.composeTweet.placeholderColor = [UIColor lightGrayColor]; // optional
 
 }
