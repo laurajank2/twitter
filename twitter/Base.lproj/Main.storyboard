@@ -259,16 +259,16 @@
                                 <action selector="didClose:" destination="w4o-k0-OYG" id="bmo-vU-fym"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="alQ-cF-jfT">
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="g3W-yX-j2O">
                             <connections>
-                                <action selector="didTweet:" destination="w4o-k0-OYG" id="yEY-1F-gkn"/>
+                                <action selector="didTapPost:" destination="w4o-k0-OYG" id="hF8-Qn-8s2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="closeButton" destination="vfD-rp-DmY" id="apj-H8-u8E"/>
                         <outlet property="composeTweet" destination="hl8-ce-SW6" id="uh8-IN-LfJ"/>
-                        <outlet property="tweetButton" destination="alQ-cF-jfT" id="TMV-XK-AK6"/>
+                        <outlet property="tweetButton" destination="g3W-yX-j2O" id="9bB-aq-LiK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcO-8I-ZUQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
