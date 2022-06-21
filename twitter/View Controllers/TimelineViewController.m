@@ -14,8 +14,9 @@
 #import "Tweet.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface TimelineViewController ()
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -23,6 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     
     // Get timeline
@@ -34,6 +37,7 @@
 //                NSLog(@"%@", text);
 //            }
             self.arrayOfTweets = (NSMutableArray*) tweets;
+            [self.tableView reloadData];
             
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
@@ -47,8 +51,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.arrayOfTweets.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -58,11 +66,11 @@
     cell.date.text = tweet.createdAtString;
     cell.userName.text = tweet.user.screenName;
     cell.postContent.text = tweet.text;
-    NSString *URLString = tweet.user.profilePicture;
-    NSURL *url = [NSURL URLWithString:URLString];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
-    cell.userPhoto.image = nil;
-    [cell.userPhoto setImageWithURL:urlData];
+//    NSString *URLString = tweet.user.profilePicture;
+//    NSURL *url = [NSURL URLWithString:URLString];
+//    NSData *urlData = [NSData dataWithContentsOfURL:url];
+//    cell.userPhoto.image = nil;
+//    [cell.userPhoto setImageWithURL:urlData];
     //cell.textLabel.text = movie[@"title"];
     
     return cell;
