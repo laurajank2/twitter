@@ -8,6 +8,7 @@
 
 #import "ComposeViewController.h"
 #import "APIManager.h"
+#import "UITextView+Placeholder/UITextView+Placeholder.h"
 
 @interface ComposeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *composeTweet;
@@ -21,6 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.composeTweet.placeholder = @"How are you?";
+    self.composeTweet.placeholderColor = [UIColor lightGrayColor]; // optional
+
 }
 
 
@@ -29,12 +33,13 @@
 
 }
 - (IBAction)didTapPost:(id)sender {
-    [[APIManager shared]postStatusWithText:@"This is my tweet 😀" completion:^(Tweet *tweet, NSError *error) {
+    [[APIManager shared]postStatusWithText:self.composeTweet.text completion:^(Tweet *tweet, NSError *error) {
         if(error){
             NSLog(@"Error composing Tweet: %@", error.localizedDescription);
         }
         else{
             [self.delegate didTweet:tweet];
+            [self dismissViewControllerAnimated:true completion:nil];
             NSLog(@"Compose Tweet Success!");
         }
     }];
