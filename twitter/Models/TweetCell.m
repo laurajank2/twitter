@@ -101,6 +101,7 @@
     [dateFormatter setDateFormat:@"dd-MM-yyyy"];
     NSDate *date = [[NSDate alloc] init];
     date = [dateFormatter dateFromString:self.tweet.createdAtString];
+    //NSLog(@"%@", date);
     NSString *shortTimeAgo = [date timeAgoSinceNow];
     NSLog(@"time ago");
     NSLog(@"%@", shortTimeAgo);
