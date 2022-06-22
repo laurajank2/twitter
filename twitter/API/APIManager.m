@@ -80,10 +80,11 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 
 - (void)favorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion {
 
-    NSString *urlString = @"1.1/favorites/create.json";
+//    NSString *urlString = @"1.1/favorites/create.json";
+    NSString *urlString = [NSString stringWithFormat:@"1.1/favorites/create.json?id=%@", tweet.idStr];
     NSLog(@"@%@", tweet.idStr);
-    NSDictionary *parameters = @{@"id": tweet.idStr};
-    [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
+//    NSDictionary *parameters = @{@"id": tweet.idStr};
+    [self POST:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
         Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
         completion(tweet, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -93,10 +94,10 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 
 - (void)unfavorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion {
 
-    NSString *urlString = @"1.1/favorites/destroy.json";
+    NSString *urlString = [NSString stringWithFormat:@"1.1/favorites/destroy.json?id=%@", tweet.idStr];
     NSLog(@"@%@", tweet.idStr);
-    NSDictionary *parameters = @{@"id": tweet.idStr};
-    [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
+    //NSDictionary *parameters = @{@"id": tweet.idStr};
+    [self POST:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
         Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
         completion(tweet, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -105,7 +106,6 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)retweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion {
-
     NSString *urlStringStart = @"1.1/statuses/retweet/";
     NSString *urlStringEnd = @".json";
     NSString *urlString = [NSString stringWithFormat:@"%@%@%@", urlStringStart, tweet.idStr, urlStringEnd];

@@ -34,6 +34,15 @@
            // other statements
             self.tweet.favorited = YES;
             self.tweet.favoriteCount += 1;
+            // TODO: Send a POST request to the POST favorites/create endpoint
+            [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+                 if(error){
+                      NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+                 }
+                 else{
+                     NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+                 }
+            }];
         }
      else
        {
@@ -41,6 +50,14 @@
            // other statements
            self.tweet.favorited = YES;
            self.tweet.favoriteCount -= 1;
+           [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+                if(error){
+                     NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
+                }
+                else{
+                    NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
+                }
+           }];
        }
     
     //refresh data
@@ -48,26 +65,27 @@
     NSLog(@"The value of favoriteCount is %i", self.tweet.favoriteCount);
     [self.likeButton setTitle:numLiked forState:UIControlStateNormal];
     
-    // TODO: Send a POST request to the POST favorites/create endpoint
-    [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
-         if(error){
-              NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
-         }
-         else{
-             NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
-         }
-     }];
+   
 }
 
 - (IBAction)didTapReTweet:(id)sender {
     // TODO: Update the local tweet model
     // TODO: Update cell UI
     if( [[self.retweetButton imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"retweet-icon.png"]]) {
-        NSLog(@"Should change to red");
+        NSLog(@"Should change to green");
            [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green.png"] forState:UIControlStateNormal];
            // other statements
-        self.tweet.retweeted = YES;
-        self.tweet.retweetCount += 1;
+            self.tweet.retweeted = YES;
+            self.tweet.retweetCount += 1;
+            // TODO: Send a POST request to the POST favorites/create endpoint
+            [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+                 if(error){
+                      NSLog(@"Error retweeting: %@", error.localizedDescription);
+                 }
+                 else{
+                     NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+                 }
+             }];
         }
      else
        {
@@ -75,6 +93,15 @@
            // other statements
            self.tweet.retweeted = YES;
            self.tweet.retweetCount -= 1;
+           // TODO: Send a POST request to the POST favorites/create endpoint
+           [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+                if(error){
+                     NSLog(@"Error unretweeting: %@", error.localizedDescription);
+                }
+                else{
+                    NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
+                }
+            }];
        }
     
     //refresh data
@@ -82,15 +109,7 @@
     NSLog(@"The value of retweetCount is %i", self.tweet.retweetCount);
     [self.retweetButton setTitle:numReTweet forState:UIControlStateNormal];
     
-    // TODO: Send a POST request to the POST favorites/create endpoint
-    [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
-         if(error){
-              NSLog(@"Error retweeting: %@", error.localizedDescription);
-         }
-         else{
-             NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
-         }
-     }];
+   
 }
 
 
@@ -98,7 +117,7 @@
     NSLog(@"Here is the orig date");
     NSLog(@"%@", self.tweet.createdAtString);
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    [dateFormatter setDateFormat:@"MM-dd-yy"];
     NSDate *date = [[NSDate alloc] init];
     date = [dateFormatter dateFromString:self.tweet.createdAtString];
     //NSLog(@"%@", date);
