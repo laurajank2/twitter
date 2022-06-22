@@ -111,7 +111,6 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    
     if([sender isKindOfClass:[TweetCell class]]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         DetailViewController *detailVC = [ segue destinationViewController];
