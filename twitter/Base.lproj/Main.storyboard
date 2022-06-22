@@ -66,12 +66,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77K-lf-nGe">
-                                <rect key="frame" x="149" y="323" width="76" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uPJ-0i-ONq">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -203,6 +197,7 @@
                                             <outlet property="retweetButton" destination="tx9-Wy-nH0" id="RVG-mp-P66"/>
                                             <outlet property="userName" destination="TTh-c6-7sH" id="a1j-gF-4AN"/>
                                             <outlet property="userPhoto" destination="Hb9-Y8-aA0" id="mht-i2-K0Y"/>
+                                            <segue destination="xpT-gJ-Zlk" kind="presentation" id="rJn-OQ-yNN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -215,9 +210,7 @@
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="top" secondItem="qax-2F-Vhk" secondAttribute="topMargin" constant="-56" id="GbC-cW-TrA"/>
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="top" secondItem="qax-2F-Vhk" secondAttribute="top" id="WVP-4q-lNe"/>
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="centerY" secondItem="qax-2F-Vhk" secondAttribute="centerY" id="YB0-BC-xDf"/>
-                            <constraint firstItem="77K-lf-nGe" firstAttribute="leading" secondItem="ugE-Ul-H9I" secondAttribute="leading" constant="149" id="fOM-vZ-bjW"/>
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="leading" secondItem="ugE-Ul-H9I" secondAttribute="leading" id="lGE-ns-gph"/>
-                            <constraint firstItem="77K-lf-nGe" firstAttribute="top" secondItem="bdH-tK-EYk" secondAttribute="bottom" constant="267" id="lfj-cL-bXx"/>
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="trailing" secondItem="ugE-Ul-H9I" secondAttribute="trailing" id="ob9-Jg-ghK"/>
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="leading" secondItem="ugE-Ul-H9I" secondAttribute="leading" id="onN-Vi-iAx"/>
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="bottom" secondItem="ugE-Ul-H9I" secondAttribute="bottom" id="wP2-gq-hwk"/>
@@ -248,6 +241,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1659.4202898550725" y="36.160714285714285"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="6ho-LI-Vbv">
+            <objects>
+                <viewController id="xpT-gJ-Zlk" customClass="DetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mU8-gd-I3P">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1CV-j7-HZv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tbK-Tx-bI9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3E6-ju-zBb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1659" y="891"/>
         </scene>
         <!--Compose View Controller-->
         <scene sceneID="ubK-6B-kjE">

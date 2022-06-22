@@ -28,6 +28,7 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [[UINavigationBar appearance] setTranslucent:NO];
     
     [self fetchTweets];
     
