@@ -187,6 +187,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="9T3-bc-KJ5" secondAttribute="trailing" constant="20" id="yvN-Pz-cIE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="author" destination="HDC-VQ-NN2" id="NdL-86-tu9"/>
                                             <outlet property="date" destination="PbK-zz-h06" id="G25-OF-Ci1"/>
@@ -197,7 +198,7 @@
                                             <outlet property="retweetButton" destination="tx9-Wy-nH0" id="RVG-mp-P66"/>
                                             <outlet property="userName" destination="TTh-c6-7sH" id="a1j-gF-4AN"/>
                                             <outlet property="userPhoto" destination="Hb9-Y8-aA0" id="mht-i2-K0Y"/>
-                                            <segue destination="xpT-gJ-Zlk" kind="presentation" id="rJn-OQ-yNN"/>
+                                            <outletCollection property="gestureRecognizers" destination="y46-pM-coD" appends="YES" id="jhX-KN-tld"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -239,6 +240,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="y46-pM-coD">
+                    <connections>
+                        <segue destination="xpT-gJ-Zlk" kind="presentation" id="8ck-O6-nvc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1659.4202898550725" y="36.160714285714285"/>
         </scene>
@@ -249,6 +255,15 @@
                     <view key="view" contentMode="scaleToFill" id="mU8-gd-I3P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhO-WV-JND">
+                                <rect key="frame" x="186" y="91" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="1CV-j7-HZv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>

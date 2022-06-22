@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailViewController : UIViewController
+@property (weak, nonatomic) Tweet *tweet;
 
 @end
 
