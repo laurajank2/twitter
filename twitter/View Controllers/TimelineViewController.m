@@ -56,12 +56,12 @@
     cell.date.text = tweet.createdAtString;
     cell.userName.text = tweet.user.screenName;
     cell.postContent.text = tweet.text;
-    //[cell.likeButton setTitle:[NSString stringWithFormat:@"%d",tweet.favoriteCount] forState:UIControlStateNormal];
     NSString *URLString = tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
-    //cell.userPhoto.image = urlData;
     [cell.userPhoto setImageWithURL:url];
+    [cell.likeButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
+    NSString *numLiked = [NSString stringWithFormat:@"%i", cell.tweet.favoriteCount];
+    [cell.likeButton setTitle:numLiked forState:UIControlStateNormal];
     
     return cell;
 }
