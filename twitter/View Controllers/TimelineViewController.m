@@ -54,7 +54,7 @@
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
     cell.tweet = tweet;
     cell.author.text = tweet.user.name;
-    cell.date.text = tweet.createdAtString;
+    [cell setDate];
     cell.userName.text = tweet.user.screenName;
     cell.postContent.text = tweet.text;
     NSString *URLString = tweet.user.profilePicture;

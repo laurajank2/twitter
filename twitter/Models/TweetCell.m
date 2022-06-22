@@ -8,6 +8,7 @@
 
 #import "TweetCell.h"
 #import "APIManager.h"
+#import "DateTools.h"
 
 @implementation TweetCell
 
@@ -23,8 +24,7 @@
 }
 - (IBAction)didTapFavorite:(id)sender {
     // TODO: Update the local tweet model
-    self.tweet.favorited = YES;
-    self.tweet.favoriteCount += 1;
+   
     // TODO: Update cell UI
     NSLog(@"@%@", self.tweet.idStr);
     self.likeButton = (UIButton*)sender;
@@ -32,13 +32,22 @@
         NSLog(@"Should change to red");
            [self.likeButton setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
            // other statements
+            self.tweet.favorited = YES;
+            self.tweet.favoriteCount += 1;
         }
      else
        {
            [self.likeButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
            // other statements
+           self.tweet.favorited = YES;
+           self.tweet.favoriteCount -= 1;
        }
-    [self refreshData];
+    
+    //refresh data
+    NSString *numLiked = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+    NSLog(@"The value of favoriteCount is %i", self.tweet.favoriteCount);
+    [self.likeButton setTitle:numLiked forState:UIControlStateNormal];
+    
     // TODO: Send a POST request to the POST favorites/create endpoint
     [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
          if(error){
@@ -52,36 +61,54 @@
 
 - (IBAction)didTapReTweet:(id)sender {
     // TODO: Update the local tweet model
-    self.tweet.retweeted = YES;
-    self.tweet.retweetCount += 1;
     // TODO: Update cell UI
     if( [[self.retweetButton imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"retweet-icon.png"]]) {
         NSLog(@"Should change to red");
            [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green.png"] forState:UIControlStateNormal];
            // other statements
+        self.tweet.retweeted = YES;
+        self.tweet.retweetCount += 1;
         }
      else
        {
            [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
            // other statements
+           self.tweet.retweeted = YES;
+           self.tweet.retweetCount -= 1;
        }
-    [self refreshData];
-    // TODO: Send a POST request to the POST favorites/create endpoint
-}
-
-
-- (void)refreshData {
     
-    //liked
-    NSString *numLiked = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
-    NSLog(@"The value of favoriteCount is %i", self.tweet.favoriteCount);
-    [self.likeButton setTitle:numLiked forState:UIControlStateNormal];
-    
-    //retweeted
+    //refresh data
     NSString *numReTweet = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
     NSLog(@"The value of retweetCount is %i", self.tweet.retweetCount);
     [self.retweetButton setTitle:numReTweet forState:UIControlStateNormal];
     
+    // TODO: Send a POST request to the POST favorites/create endpoint
+    [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+         if(error){
+              NSLog(@"Error retweeting: %@", error.localizedDescription);
+         }
+         else{
+             NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+         }
+     }];
 }
+
+
+- (void)setDate {
+    NSLog(@"Here is the orig date");
+    NSLog(@"%@", self.tweet.createdAtString);
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    NSDate *date = [[NSDate alloc] init];
+    date = [dateFormatter dateFromString:self.tweet.createdAtString];
+    NSString *shortTimeAgo = [date timeAgoSinceNow];
+    NSLog(@"time ago");
+    NSLog(@"%@", shortTimeAgo);
+    self.date.text = shortTimeAgo;
+    
+}
+
+
+
 
 @end
