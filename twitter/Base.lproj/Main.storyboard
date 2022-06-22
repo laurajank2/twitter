@@ -129,13 +129,8 @@
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="retweet-icon" title="reNum"/>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-hm-uo2">
-                                                    <rect key="frame" x="221" y="119" width="106" height="44"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="favor-icon" title="likeNum"/>
                                                     <connections>
-                                                        <action selector="didTapFavorite:" destination="NHR-mv-bmw" eventType="touchUpInside" id="XJ9-gb-QgU"/>
+                                                        <action selector="didTapReTweet:" destination="NHR-mv-bmw" eventType="touchUpInside" id="jMy-xD-2gg"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4d-0i-Tzz">
@@ -154,6 +149,14 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="message-icon" title=""/>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-hm-uo2">
+                                                    <rect key="frame" x="217" y="122" width="106" height="44"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="favor-icon" title="likeNum"/>
+                                                    <connections>
+                                                        <action selector="didTapFavorite:" destination="NHR-mv-bmw" eventType="touchUpInside" id="XJ9-gb-QgU"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="X4d-0i-Tzz" firstAttribute="bottom" secondItem="tx9-Wy-nH0" secondAttribute="bottom" constant="28.5" id="0M7-Ud-AFA"/>
@@ -164,7 +167,7 @@
                                                 <constraint firstItem="9T3-bc-KJ5" firstAttribute="leading" secondItem="X4d-0i-Tzz" secondAttribute="leading" id="8rJ-XR-kpM"/>
                                                 <constraint firstItem="TTh-c6-7sH" firstAttribute="firstBaseline" secondItem="PbK-zz-h06" secondAttribute="firstBaseline" id="CVM-Ak-Uee"/>
                                                 <constraint firstItem="X4d-0i-Tzz" firstAttribute="bottom" secondItem="1Ya-CB-gch" secondAttribute="bottomMargin" constant="28.5" id="EPS-do-iCO"/>
-                                                <constraint firstItem="yd5-Pv-gSD" firstAttribute="leading" secondItem="yuZ-hm-uo2" secondAttribute="trailing" constant="8" id="Fbr-dv-WTX"/>
+                                                <constraint firstItem="yd5-Pv-gSD" firstAttribute="leading" secondItem="yuZ-hm-uo2" secondAttribute="trailing" constant="12" id="Fbr-dv-WTX"/>
                                                 <constraint firstItem="Hb9-Y8-aA0" firstAttribute="top" secondItem="HDC-VQ-NN2" secondAttribute="top" id="Gph-nI-SsP"/>
                                                 <constraint firstItem="TTh-c6-7sH" firstAttribute="baseline" secondItem="PbK-zz-h06" secondAttribute="baseline" id="HQj-kL-Zme"/>
                                                 <constraint firstItem="TTh-c6-7sH" firstAttribute="top" secondItem="1Ya-CB-gch" secondAttribute="topMargin" constant="3" id="UeB-S5-DJh"/>
@@ -176,10 +179,10 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="Hb9-Y8-aA0" secondAttribute="bottom" constant="72" id="eEM-uC-G1W"/>
                                                 <constraint firstItem="tx9-Wy-nH0" firstAttribute="leading" secondItem="X4d-0i-Tzz" secondAttribute="trailing" constant="50" id="g6R-hz-ksF"/>
                                                 <constraint firstItem="HDC-VQ-NN2" firstAttribute="leading" secondItem="Hb9-Y8-aA0" secondAttribute="trailing" constant="8" id="haG-VE-of4"/>
-                                                <constraint firstItem="yuZ-hm-uo2" firstAttribute="leading" secondItem="tx9-Wy-nH0" secondAttribute="trailing" constant="13" id="lPo-Ly-rfL"/>
+                                                <constraint firstItem="yuZ-hm-uo2" firstAttribute="leading" secondItem="tx9-Wy-nH0" secondAttribute="trailing" constant="9" id="lPo-Ly-rfL"/>
                                                 <constraint firstItem="X4d-0i-Tzz" firstAttribute="centerY" secondItem="yd5-Pv-gSD" secondAttribute="centerY" id="lz4-3m-K5C"/>
                                                 <constraint firstItem="tx9-Wy-nH0" firstAttribute="top" secondItem="yd5-Pv-gSD" secondAttribute="top" constant="2" id="tXF-YB-Ewe"/>
-                                                <constraint firstItem="yuZ-hm-uo2" firstAttribute="top" secondItem="9T3-bc-KJ5" secondAttribute="bottom" constant="-2" id="vRX-4a-mHb"/>
+                                                <constraint firstItem="yuZ-hm-uo2" firstAttribute="top" secondItem="9T3-bc-KJ5" secondAttribute="bottom" constant="1" id="vRX-4a-mHb"/>
                                                 <constraint firstItem="HDC-VQ-NN2" firstAttribute="leading" secondItem="9T3-bc-KJ5" secondAttribute="leading" id="yZp-cU-Aqm"/>
                                             </constraints>
                                         </tableViewCellContentView>

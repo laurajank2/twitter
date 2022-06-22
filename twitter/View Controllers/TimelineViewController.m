@@ -52,6 +52,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
+    cell.tweet = tweet;
     cell.author.text = tweet.user.name;
     cell.date.text = tweet.createdAtString;
     cell.userName.text = tweet.user.screenName;
@@ -62,6 +63,9 @@
     [cell.likeButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
     NSString *numLiked = [NSString stringWithFormat:@"%i", cell.tweet.favoriteCount];
     [cell.likeButton setTitle:numLiked forState:UIControlStateNormal];
+    [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
+    NSString *numreTweet = [NSString stringWithFormat:@"%i", cell.tweet.retweetCount];
+    [cell.retweetButton setTitle:numreTweet forState:UIControlStateNormal];
     
     return cell;
 }

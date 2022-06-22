@@ -50,11 +50,37 @@
      }];
 }
 
+- (IBAction)didTapReTweet:(id)sender {
+    // TODO: Update the local tweet model
+    self.tweet.retweeted = YES;
+    self.tweet.retweetCount += 1;
+    // TODO: Update cell UI
+    if( [[self.retweetButton imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"retweet-icon.png"]]) {
+        NSLog(@"Should change to red");
+           [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green.png"] forState:UIControlStateNormal];
+           // other statements
+        }
+     else
+       {
+           [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
+           // other statements
+       }
+    [self refreshData];
+    // TODO: Send a POST request to the POST favorites/create endpoint
+}
+
+
 - (void)refreshData {
     
+    //liked
     NSString *numLiked = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
     NSLog(@"The value of favoriteCount is %i", self.tweet.favoriteCount);
     [self.likeButton setTitle:numLiked forState:UIControlStateNormal];
+    
+    //retweeted
+    NSString *numReTweet = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
+    NSLog(@"The value of retweetCount is %i", self.tweet.retweetCount);
+    [self.retweetButton setTitle:numReTweet forState:UIControlStateNormal];
     
 }
 
