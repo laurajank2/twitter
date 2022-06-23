@@ -28,7 +28,7 @@
     // TODO: Update cell UI
     NSLog(@"@%@", self.tweet.idStr);
     self.likeButton = (UIButton*)sender;
-    if( [[self.likeButton imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"favor-icon.png"]]) {
+    if(!self.tweet.favorited) {
         NSLog(@"Should change to red");
            [self.likeButton setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
            // other statements
@@ -71,7 +71,7 @@
 - (IBAction)didTapReTweet:(id)sender {
     // TODO: Update the local tweet model
     // TODO: Update cell UI
-    if( [[self.retweetButton imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"retweet-icon.png"]]) {
+    if(!self.tweet.retweeted) {
         NSLog(@"Should change to green");
            [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green.png"] forState:UIControlStateNormal];
            // other statements

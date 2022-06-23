@@ -231,7 +231,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" tag="100" image="edit-icon" id="o7F-mW-zjG">
                             <connections>
-                                <segue destination="t4c-Dx-sMH" kind="presentation" id="eA9-g5-19y"/>
+                                <segue destination="t4c-Dx-sMH" kind="presentation" id="K3g-ye-Paj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -443,13 +443,18 @@
         <!--Navigation Controller-->
         <scene sceneID="03D-zl-7m0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t4c-Dx-sMH" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" interfaceStyle="light" id="t4c-Dx-sMH" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="3nr-6N-Is9">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="3nr-6N-Is9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WHQ-Zb-UQc">
+                        <rect key="frame" x="0.0" y="-54" width="0.0" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="w4o-k0-OYG" kind="relationship" relationship="rootViewController" id="RKC-CI-4TO"/>
                     </connections>

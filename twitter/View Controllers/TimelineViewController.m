@@ -36,7 +36,6 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"updateParent" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,7 +62,16 @@
     NSString *URLString = tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     [cell.userPhoto setImageWithURL:url];
-    [cell.likeButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
+    if (cell.tweet.favorited) {
+        [cell.likeButton setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
+    } else {
+        [cell.likeButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
+    }
+    if (cell.tweet.retweeted) {
+        [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green.png"] forState:UIControlStateNormal];
+    } else {
+        [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
+    }
     NSString *numLiked = [NSString stringWithFormat:@"%i", cell.tweet.favoriteCount];
     [cell.likeButton setTitle:numLiked forState:UIControlStateNormal];
     [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
@@ -74,6 +82,7 @@
 }
 
 - (void) viewDidAppear:(BOOL) animated{
+    NSLog(@"view did appear");
     [super viewDidAppear: animated];
     // Get timeline
     [self fetchTweets];
@@ -128,6 +137,9 @@
         detailVC.tweet = self.arrayOfTweets[indexPath.row];
     } else if ([sender isKindOfClass:[UIBarButtonItem class]]) {
         UINavigationController *navigationController = [segue destinationViewController];
+        //below didn't work to fix translucent
+//        [navigationController.navigationBar  setTranslucent:NO];
+//        navigationController.navigationBar.barTintColor=[UIColor groupTableViewBackgroundColor];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
         
