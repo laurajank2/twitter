@@ -36,6 +36,7 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"updateParent" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,6 +73,12 @@
     return cell;
 }
 
+- (void) viewDidAppear:(BOOL) animated{
+    [super viewDidAppear: animated];
+    // Get timeline
+    [self fetchTweets];
+}
+
 // Makes a network request to get updated data
  // Updates the tableView with the new data
  // Hides the RefreshControl
@@ -98,8 +105,12 @@
 }
 
 - (void)didTweet:(Tweet *)tweet {
-    [self.arrayOfTweets addObject:tweet];
-    [self fetchTweets];
+    NSLog(@"did tweet");
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{}];
+    
+    [self.arrayOfTweets insertObject:tweet atIndex:0];
+//    [self fetchTweets];
+    [self.tableView reloadData];
     
 }
 
@@ -115,7 +126,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         DetailViewController *detailVC = [ segue destinationViewController];
         detailVC.tweet = self.arrayOfTweets[indexPath.row];
-    } else if ([sender isKindOfClass:[UIButton class]]) {
+    } else if ([sender isKindOfClass:[UIBarButtonItem class]]) {
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;

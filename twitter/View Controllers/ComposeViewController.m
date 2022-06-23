@@ -24,12 +24,15 @@
     // Do any additional setup after loading the view.
     self.composeTweet.placeholder = @"Type Tweet here";
     self.composeTweet.placeholderColor = [UIColor lightGrayColor]; // optional
+    [self.navigationController.navigationBar setBarTintColor:[UIColor greenColor]];
+    [self.navigationController.navigationBar setTranslucent:NO];
 
 }
 
 
 - (IBAction)didClose:(id)sender {
-    [self dismissViewControllerAnimated:true completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateParent" object:nil];
 
 }
 - (IBAction)didTapPost:(id)sender {
@@ -38,8 +41,7 @@
             NSLog(@"Error composing Tweet: %@", error.localizedDescription);
         }
         else{
-            [self.delegate didTweet:tweet];
-            [self dismissViewControllerAnimated:true completion:nil];
+            [self.delegate didTweet:tweet];            
             NSLog(@"Compose Tweet Success!");
         }
     }];

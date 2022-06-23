@@ -34,10 +34,9 @@
     self.handleDetail.text = self.tweet.user.screenName;
     self.textDetail.text = self.tweet.text;
     //date
-    NSLog(@"Here is the orig date");
     NSLog(@"%@", self.tweet.createdAtString);
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM-dd-yy"];
+    [dateFormatter setDateFormat:@"E MMM d HH:mm:ss Z y"];
     NSDate *date = [[NSDate alloc] init];
     date = [dateFormatter dateFromString:self.tweet.createdAtString];
     //NSLog(@"%@", date);
