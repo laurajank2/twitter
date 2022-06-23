@@ -48,24 +48,31 @@
     NSString *URLString = self.tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     [self.detailImage setImageWithURL:url];
-    [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
+    //set button images based on their status
+    if (self.tweet.favorited) {
+        [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
+    } else {
+        [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
+    }
+    if (self.tweet.retweeted) {
+        [self.retweetDetail setImage:[UIImage imageNamed:@"retweet-icon-green.png"] forState:UIControlStateNormal];
+    } else {
+        [self.retweetDetail setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
+    }
     NSString *numLiked = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
     [self.favoriteButton setTitle:numLiked forState:UIControlStateNormal];
-    [self.retweetDetail setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
     NSString *numreTweet = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
     [self.retweetDetail setTitle:numreTweet forState:UIControlStateNormal];
-    
+    NSLog(@"idstring beginning");
+    NSLog(@"@%@", self.tweet.idStr);
     
 }
 - (IBAction)tapDetailFav:(id)sender {
     NSLog(@"@%@", self.tweet.idStr);
     self.favoriteButton = (UIButton*)sender;
-    if( [[self.favoriteButton imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"favor-icon.png"]]) {
+    if(!self.tweet.favorited) {
         NSLog(@"Should change to red");
-           [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
-           // other statements
-            self.tweet.favorited = YES;
-            self.tweet.favoriteCount += 1;
+        NSLog(@"@%@", self.tweet.idStr);
             // TODO: Send a POST request to the POST favorites/create endpoint
             [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
                  if(error){
@@ -73,21 +80,34 @@
                  }
                  else{
                      NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+                     [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
+                     // other statements
+                      self.tweet.favorited = YES;
+                      self.tweet.favoriteCount += 1;
+                     NSString *numLiked = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+                     [self.favoriteButton setTitle:numLiked forState:UIControlStateNormal];
+                     [self.delegate didDismiss];
+                     NSLog(@"did update");
                  }
             }];
         }
      else
        {
-           [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
-           // other statements
-           self.tweet.favorited = YES;
-           self.tweet.favoriteCount -= 1;
+           
            [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
                 if(error){
                      NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
                 }
                 else{
                     NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
+                    [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
+                    // other statements
+                    self.tweet.favorited = NO;
+                    self.tweet.favoriteCount -= 1;
+                    NSString *numLiked = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+                    [self.favoriteButton setTitle:numLiked forState:UIControlStateNormal];
+                    [self.delegate didDismiss];
+                    NSLog(@"did update");
                 }
            }];
        }
@@ -98,28 +118,30 @@
     [self.favoriteButton setTitle:numLiked forState:UIControlStateNormal];
 }
 - (IBAction)tapDetailRetweet:(id)sender {
-    if( [[self.retweetDetail imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"retweet-icon.png"]]) {
+    if(!self.tweet.retweeted) {
         NSLog(@"Should change to green");
            [self.retweetDetail setImage:[UIImage imageNamed:@"retweet-icon-green.png"] forState:UIControlStateNormal];
            // other statements
-            self.tweet.retweeted = YES;
-            self.tweet.retweetCount += 1;
+           
             // TODO: Send a POST request to the POST favorites/create endpoint
             [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
                  if(error){
                       NSLog(@"Error retweeting: %@", error.localizedDescription);
+                     self.tweet.retweeted = YES;
+                     self.tweet.retweetCount += 1;
                  }
                  else{
                      NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+                     [self.delegate didDismiss];
+                     NSLog(@"did update");
                  }
              }];
         }
      else
        {
-           [self.retweetDetail setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
+          
            // other statements
-           self.tweet.retweeted = YES;
-           self.tweet.retweetCount -= 1;
+           
            // TODO: Send a POST request to the POST favorites/create endpoint
            [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
                 if(error){
@@ -127,6 +149,11 @@
                 }
                 else{
                     NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
+                    [self.retweetDetail setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
+                    self.tweet.retweeted = NO;
+                    self.tweet.retweetCount -= 1;
+                    [self.delegate didDismiss];
+                    NSLog(@"did update");
                 }
             }];
        }
@@ -136,7 +163,6 @@
     NSLog(@"The value of retweetCount is %i", self.tweet.retweetCount);
     [self.retweetDetail setTitle:numReTweet forState:UIControlStateNormal];
 }
-
 /*
 #pragma mark - Navigation
 

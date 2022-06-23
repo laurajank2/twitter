@@ -23,9 +23,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.composeTweet.placeholder = @"Type Tweet here";
-    self.composeTweet.placeholderColor = [UIColor lightGrayColor]; // optional
-    [self.navigationController.navigationBar setBarTintColor:[UIColor greenColor]];
-    [self.navigationController.navigationBar setTranslucent:NO];
+    self.composeTweet.placeholderColor = [UIColor lightGrayColor];
+    //janky code to make navbar opaque
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                         forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.shadowImage = [UIImage new];////UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
 
 }
 

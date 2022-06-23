@@ -140,4 +140,22 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     }];
 }
 
+//- (void)profilePic:(NSString *)screenName
+//                  :(UIImageView *)profileImage
+//                  :(void (^)(Tweet *, NSError *))completion  {
+//    NSString *urlStringStart = @"1.1/users/profile_banner.json?screen_name=";
+//    NSString *urlString = [NSString stringWithFormat:@"%@%@", urlStringStart, screenName];
+//    [self GET:urlString
+//       parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+//           // Success
+//           NSMutableArray *images =
+//           completion(tweets, nil);
+//       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//           // There was a problem
+//           completion(nil, error);
+//    }];
+//    
+//    
+//}
+
 @end

@@ -15,6 +15,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.userPhoto.layer.cornerRadius = 30;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -48,7 +49,7 @@
        {
            [self.likeButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
            // other statements
-           self.tweet.favorited = YES;
+           self.tweet.favorited = NO;
            self.tweet.favoriteCount -= 1;
            [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
                 if(error){
@@ -91,7 +92,7 @@
        {
            [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
            // other statements
-           self.tweet.retweeted = YES;
+           self.tweet.retweeted = NO;
            self.tweet.retweetCount -= 1;
            // TODO: Send a POST request to the POST favorites/create endpoint
            [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {

@@ -16,7 +16,7 @@
 #import "ComposeViewController.h"
 #import "DetailViewController.h"
 
-@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface TimelineViewController () <DetailViewControllerDelegate, ComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -29,7 +29,11 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    [[UINavigationBar appearance] setTranslucent:NO];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                         forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.shadowImage = [UIImage new];////UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
     
     [self fetchTweets];
     
@@ -74,7 +78,6 @@
     }
     NSString *numLiked = [NSString stringWithFormat:@"%i", cell.tweet.favoriteCount];
     [cell.likeButton setTitle:numLiked forState:UIControlStateNormal];
-    [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
     NSString *numreTweet = [NSString stringWithFormat:@"%i", cell.tweet.retweetCount];
     [cell.retweetButton setTitle:numreTweet forState:UIControlStateNormal];
     
@@ -113,6 +116,10 @@
     
 }
 
+- (void)didDismiss {
+    [self fetchTweets];
+}
+
 - (void)didTweet:(Tweet *)tweet {
     NSLog(@"did tweet");
     [self.presentedViewController dismissViewControllerAnimated:YES completion:^{}];
@@ -135,6 +142,8 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         DetailViewController *detailVC = [ segue destinationViewController];
         detailVC.tweet = self.arrayOfTweets[indexPath.row];
+        NSLog(@"@%@", detailVC.tweet.idStr);
+        detailVC.delegate = self;
     } else if ([sender isKindOfClass:[UIBarButtonItem class]]) {
         UINavigationController *navigationController = [segue destinationViewController];
         //below didn't work to fix translucent
