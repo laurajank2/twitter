@@ -127,11 +127,15 @@
             [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
                  if(error){
                       NSLog(@"Error retweeting: %@", error.localizedDescription);
-                     self.tweet.retweeted = YES;
-                     self.tweet.retweetCount += 1;
+                     
+                     
                  }
                  else{
                      NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+                     self.tweet.retweeted = YES;
+                     self.tweet.retweetCount += 1;
+                     NSString *numreTweet = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
+                     [self.retweetDetail setTitle:numreTweet forState:UIControlStateNormal];
                      [self.delegate didDismiss];
                      NSLog(@"did update");
                  }
@@ -152,6 +156,8 @@
                     [self.retweetDetail setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
                     self.tweet.retweeted = NO;
                     self.tweet.retweetCount -= 1;
+                    NSString *numreTweet = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
+                    [self.retweetDetail setTitle:numreTweet forState:UIControlStateNormal];
                     [self.delegate didDismiss];
                     NSLog(@"did update");
                 }
