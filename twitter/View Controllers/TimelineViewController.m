@@ -28,12 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                         forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
-    self.navigationController.navigationBar.shadowImage = [UIImage new];////UIImageNamed:@"transparent.png"
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.translucent = NO;
     
     [self fetchTweets];
     

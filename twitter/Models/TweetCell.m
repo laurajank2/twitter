@@ -15,7 +15,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.userPhoto.layer.cornerRadius = 30;
+    self.userPhoto.layer.cornerRadius = CGRectGetHeight(self.userPhoto.frame) / 2;
+    self.userPhoto.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
