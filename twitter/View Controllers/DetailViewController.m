@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "DateTools.h"
+#import "APIManager.h"
 
 @interface DetailViewController ()
 
@@ -56,6 +57,85 @@
     [self.retweetDetail setTitle:numreTweet forState:UIControlStateNormal];
     
     
+}
+- (IBAction)tapDetailFav:(id)sender {
+    NSLog(@"@%@", self.tweet.idStr);
+    self.favoriteButton = (UIButton*)sender;
+    if( [[self.favoriteButton imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"favor-icon.png"]]) {
+        NSLog(@"Should change to red");
+           [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
+           // other statements
+            self.tweet.favorited = YES;
+            self.tweet.favoriteCount += 1;
+            // TODO: Send a POST request to the POST favorites/create endpoint
+            [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+                 if(error){
+                      NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+                 }
+                 else{
+                     NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+                 }
+            }];
+        }
+     else
+       {
+           [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
+           // other statements
+           self.tweet.favorited = YES;
+           self.tweet.favoriteCount -= 1;
+           [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+                if(error){
+                     NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
+                }
+                else{
+                    NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
+                }
+           }];
+       }
+    
+    //refresh data
+    NSString *numLiked = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+    NSLog(@"The value of favoriteCount is %i", self.tweet.favoriteCount);
+    [self.favoriteButton setTitle:numLiked forState:UIControlStateNormal];
+}
+- (IBAction)tapDetailRetweet:(id)sender {
+    if( [[self.retweetDetail imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"retweet-icon.png"]]) {
+        NSLog(@"Should change to green");
+           [self.retweetDetail setImage:[UIImage imageNamed:@"retweet-icon-green.png"] forState:UIControlStateNormal];
+           // other statements
+            self.tweet.retweeted = YES;
+            self.tweet.retweetCount += 1;
+            // TODO: Send a POST request to the POST favorites/create endpoint
+            [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+                 if(error){
+                      NSLog(@"Error retweeting: %@", error.localizedDescription);
+                 }
+                 else{
+                     NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+                 }
+             }];
+        }
+     else
+       {
+           [self.retweetDetail setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
+           // other statements
+           self.tweet.retweeted = YES;
+           self.tweet.retweetCount -= 1;
+           // TODO: Send a POST request to the POST favorites/create endpoint
+           [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+                if(error){
+                     NSLog(@"Error unretweeting: %@", error.localizedDescription);
+                }
+                else{
+                    NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
+                }
+            }];
+       }
+    
+    //refresh data
+    NSString *numReTweet = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
+    NSLog(@"The value of retweetCount is %i", self.tweet.retweetCount);
+    [self.retweetDetail setTitle:numReTweet forState:UIControlStateNormal];
 }
 
 /*

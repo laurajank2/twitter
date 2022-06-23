@@ -287,12 +287,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="retweet-icon"/>
+                                <connections>
+                                    <action selector="tapDetailRetweet:" destination="xpT-gJ-Zlk" eventType="touchUpInside" id="e9G-1I-Ie6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSZ-D9-aDX">
                                 <rect key="frame" x="227" y="232" width="54" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="favor-icon" title=""/>
+                                <connections>
+                                    <action selector="tapDetailFav:" destination="xpT-gJ-Zlk" eventType="touchUpInside" id="Weq-5k-gKE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNy-XP-rpK">
                                 <rect key="frame" x="334" y="232" width="54" height="44"/>
