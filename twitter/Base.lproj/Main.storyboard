@@ -70,11 +70,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="169" id="NHR-mv-bmw" customClass="TweetCell">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="169"/>
+                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="203" id="NHR-mv-bmw" customClass="TweetCell">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="203"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NHR-mv-bmw" id="1Ya-CB-gch">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="169"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="203"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hb9-Y8-aA0">
@@ -91,13 +91,6 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="83" id="eya-h6-LYT"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9T3-bc-KJ5">
-                                                    <rect key="frame" x="103" y="47" width="291" height="38"/>
-                                                    <string key="text">Haiku is a type of short form poetry originally from Japan.  Haiku is a type of short form poetry originally from Japan.Haiku is a type of short form poetry originally from Japan.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -129,28 +122,29 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="message-icon" title=""/>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-hm-uo2">
-                                                    <rect key="frame" x="204" y="111.5" width="106" height="44"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="106" id="jKn-pC-tRF"/>
-                                                    </constraints>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-hm-uo2">
+                                                    <rect key="frame" x="209" y="149" width="106" height="44"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="favor-icon" title="likeNum"/>
                                                     <connections>
                                                         <action selector="didTapFavorite:" destination="NHR-mv-bmw" eventType="touchUpInside" id="XJ9-gb-QgU"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tx9-Wy-nH0">
-                                                    <rect key="frame" x="77" y="108" width="98" height="51"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="98" id="wPs-6D-OvQ"/>
-                                                    </constraints>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tx9-Wy-nH0">
+                                                    <rect key="frame" x="96" y="149" width="98" height="44"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="retweet-icon" title="reNum"/>
                                                     <connections>
                                                         <action selector="didTapReTweet:" destination="NHR-mv-bmw" eventType="touchUpInside" id="jMy-xD-2gg"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQS-Ze-QLq">
+                                                    <rect key="frame" x="103" y="42" width="280" height="97"/>
+                                                    <string key="text">warning: Auto Layout Localization: Fixed leading and trailing constraints may cause clipping, one of them should have a constant ≥ standard space.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Hb9-Y8-aA0" firstAttribute="leading" secondItem="1Ya-CB-gch" secondAttribute="leading" constant="20" id="4Nd-0Q-1j5"/>
@@ -158,27 +152,25 @@
                                                 <constraint firstItem="PbK-zz-h06" firstAttribute="centerY" secondItem="TTh-c6-7sH" secondAttribute="centerY" id="63d-eW-8tP"/>
                                                 <constraint firstAttribute="trailing" secondItem="PbK-zz-h06" secondAttribute="trailing" constant="31" id="BXN-1j-OBe"/>
                                                 <constraint firstItem="yd5-Pv-gSD" firstAttribute="centerY" secondItem="yuZ-hm-uo2" secondAttribute="centerY" id="Bbz-Yw-jET"/>
-                                                <constraint firstItem="X4d-0i-Tzz" firstAttribute="top" secondItem="Hb9-Y8-aA0" secondAttribute="bottom" constant="23" id="Caj-hb-Bgd"/>
                                                 <constraint firstItem="yd5-Pv-gSD" firstAttribute="top" secondItem="yuZ-hm-uo2" secondAttribute="top" constant="-4" id="FBg-z3-Je8"/>
                                                 <constraint firstAttribute="trailing" secondItem="yd5-Pv-gSD" secondAttribute="trailing" constant="30" id="Jiu-w4-UZ5"/>
-                                                <constraint firstItem="9T3-bc-KJ5" firstAttribute="leading" secondItem="Hb9-Y8-aA0" secondAttribute="trailing" constant="8" id="KuS-mY-KAR"/>
-                                                <constraint firstAttribute="trailing" secondItem="9T3-bc-KJ5" secondAttribute="trailing" constant="20" symbolic="YES" id="MLe-HE-PW1"/>
-                                                <constraint firstItem="yuZ-hm-uo2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tx9-Wy-nH0" secondAttribute="trailing" priority="997" constant="15" id="NZm-fv-BFb"/>
+                                                <constraint firstItem="yuZ-hm-uo2" firstAttribute="leading" secondItem="tx9-Wy-nH0" secondAttribute="trailing" priority="997" constant="15" id="NZm-fv-BFb"/>
                                                 <constraint firstItem="tx9-Wy-nH0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X4d-0i-Tzz" secondAttribute="trailing" constant="15" id="Oxw-AB-80K"/>
+                                                <constraint firstItem="X4d-0i-Tzz" firstAttribute="top" secondItem="OQS-Ze-QLq" secondAttribute="bottom" constant="10" id="P6h-zx-YX7"/>
                                                 <constraint firstItem="yuZ-hm-uo2" firstAttribute="centerY" secondItem="tx9-Wy-nH0" secondAttribute="centerY" id="R4e-ec-67g"/>
                                                 <constraint firstItem="Hb9-Y8-aA0" firstAttribute="top" secondItem="1Ya-CB-gch" secondAttribute="top" constant="10" id="S0Q-XH-z3F"/>
                                                 <constraint firstItem="HDC-VQ-NN2" firstAttribute="top" secondItem="Hb9-Y8-aA0" secondAttribute="top" id="VEV-o5-W2l"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Hb9-Y8-aA0" secondAttribute="bottom" constant="8" id="VtW-XW-zlu"/>
-                                                <constraint firstItem="yd5-Pv-gSD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yuZ-hm-uo2" secondAttribute="trailing" priority="750" constant="15" id="WcC-CO-TEx"/>
+                                                <constraint firstItem="yd5-Pv-gSD" firstAttribute="leading" secondItem="yuZ-hm-uo2" secondAttribute="trailing" priority="750" constant="15" id="WcC-CO-TEx"/>
+                                                <constraint firstAttribute="trailing" secondItem="OQS-Ze-QLq" secondAttribute="trailing" constant="31" id="Ybi-q9-Unx"/>
                                                 <constraint firstItem="X4d-0i-Tzz" firstAttribute="leading" secondItem="1Ya-CB-gch" secondAttribute="leading" constant="10" id="ZK2-Z7-6oa"/>
                                                 <constraint firstItem="PbK-zz-h06" firstAttribute="leading" secondItem="TTh-c6-7sH" secondAttribute="trailing" constant="31" id="Zhk-FI-N19"/>
                                                 <constraint firstAttribute="bottom" secondItem="X4d-0i-Tzz" secondAttribute="bottom" constant="10" id="cKd-iU-Qao"/>
                                                 <constraint firstItem="HDC-VQ-NN2" firstAttribute="leading" secondItem="Hb9-Y8-aA0" secondAttribute="trailing" constant="8" id="dP8-Uu-XSG"/>
-                                                <constraint firstItem="9T3-bc-KJ5" firstAttribute="top" secondItem="HDC-VQ-NN2" secondAttribute="bottom" constant="13" id="eNT-fo-Fyu"/>
+                                                <constraint firstItem="OQS-Ze-QLq" firstAttribute="top" secondItem="HDC-VQ-NN2" secondAttribute="bottom" constant="8" symbolic="YES" id="h18-8f-pdU"/>
+                                                <constraint firstItem="OQS-Ze-QLq" firstAttribute="leading" secondItem="Hb9-Y8-aA0" secondAttribute="trailing" constant="8" symbolic="YES" id="kai-Bz-POp"/>
                                                 <constraint firstItem="TTh-c6-7sH" firstAttribute="centerY" secondItem="HDC-VQ-NN2" secondAttribute="centerY" constant="1.5" id="nPe-u4-rRz"/>
-                                                <constraint firstAttribute="bottom" secondItem="tx9-Wy-nH0" secondAttribute="bottom" constant="10" id="pDx-bb-cPj"/>
                                                 <constraint firstItem="TTh-c6-7sH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HDC-VQ-NN2" secondAttribute="trailing" priority="998" constant="16" id="r8J-b2-NSR"/>
-                                                <constraint firstItem="tx9-Wy-nH0" firstAttribute="top" secondItem="9T3-bc-KJ5" secondAttribute="bottom" constant="10" id="tUX-r0-bGO"/>
+                                                <constraint firstItem="tx9-Wy-nH0" firstAttribute="top" secondItem="OQS-Ze-QLq" secondAttribute="bottom" constant="10" id="xQf-dG-nZD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
@@ -188,7 +180,7 @@
                                             <outlet property="forwardButton" destination="X4d-0i-Tzz" id="VUV-Ub-YQV"/>
                                             <outlet property="likeButton" destination="yuZ-hm-uo2" id="3zr-fi-scu"/>
                                             <outlet property="mailButton" destination="yd5-Pv-gSD" id="v3r-4Q-3xU"/>
-                                            <outlet property="postContent" destination="9T3-bc-KJ5" id="u0N-yR-wst"/>
+                                            <outlet property="postContent" destination="OQS-Ze-QLq" id="UMS-2Q-DVr"/>
                                             <outlet property="retweetButton" destination="tx9-Wy-nH0" id="RVG-mp-P66"/>
                                             <outlet property="userName" destination="TTh-c6-7sH" id="a1j-gF-4AN"/>
                                             <outlet property="userPhoto" destination="Hb9-Y8-aA0" id="mht-i2-K0Y"/>
