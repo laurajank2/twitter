@@ -29,6 +29,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //back button title
+    self.navigationController.navigationBar.topItem.backBarButtonItem = [[UIBarButtonItem alloc]
+    initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     //names
     self.screenName.text = self.user.screenName;
     self.userName.text = self.user.name;
@@ -52,7 +55,6 @@
     [dateFormatter setDateFormat:@"E MMM d HH:mm:ss Z y"];
     NSDate *date = [[NSDate alloc] init];
     date = [dateFormatter dateFromString:self.user.join_date];
-    //NSLog(@"%@", date);
     NSString *dateJoined = [dateFormatter stringFromDate:date];
     self.joinedDate.text = [NSString stringWithFormat:@"%@%@", @"Joined ", dateJoined];
 }
