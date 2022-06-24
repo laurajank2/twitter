@@ -136,10 +136,11 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    if ([[segue identifier] isEqualToString:@"showProfile"]) {
+    if ([[segue identifier] isEqualToString:@"profileSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         ProfileViewController *profileVC = [ segue destinationViewController];
         profileVC.tweet = self.arrayOfTweets[indexPath.row];
+        NSLog(@"profile id");
         NSLog(@"@%@", profileVC.tweet.idStr);
     } else if([sender isKindOfClass:[TweetCell class]]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];

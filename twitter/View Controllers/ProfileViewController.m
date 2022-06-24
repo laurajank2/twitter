@@ -7,8 +7,20 @@
 //
 
 #import "ProfileViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface ProfileViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet UIButton *followBtn;
+@property (weak, nonatomic) IBOutlet UILabel *screenName;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UITextView *bio;
+@property (weak, nonatomic) IBOutlet UILabel *joinedDate;
+@property (weak, nonatomic) IBOutlet UILabel *followingNum;
+@property (weak, nonatomic) IBOutlet UILabel *followingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followersNum;
+@property (weak, nonatomic) IBOutlet UILabel *followerslabel;
 
 @end
 
@@ -16,7 +28,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    //names
+    self.screenName.text = self.tweet.user.screenName;
+    self.userName.text = self.tweet.user.name;
+    //images
+    NSString *URLString = self.tweet.user.profileBanner;
+    NSURL *url = [NSURL URLWithString:URLString];
+    [self.backgroundView setImageWithURL:url];
+    URLString = self.tweet.user.profilePicture;
+    url = [NSURL URLWithString:URLString];
+    [self.profileImage setImageWithURL:url];
+    self.profileImage.layer.cornerRadius = CGRectGetHeight(self.profileImage.frame) / 2;
+    self.profileImage.clipsToBounds = YES;
 }
 
 /*
