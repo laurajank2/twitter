@@ -17,6 +17,9 @@
     // Initialization code
     self.userPhoto.layer.cornerRadius = CGRectGetHeight(self.userPhoto.frame) / 2;
     self.userPhoto.clipsToBounds = YES;
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
+    [self.userPhoto addGestureRecognizer:profileTapGestureRecognizer];
+    [self.userPhoto setUserInteractionEnabled:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -114,7 +117,6 @@
    
 }
 
-
 - (void)setDate {
     NSLog(@"Here is the orig date");
     NSLog(@"%@", self.tweet.createdAtString);
@@ -130,6 +132,11 @@
     
 }
 
+- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
+    //TODO: Call method delegate
+    NSLog(@"tapped");
+    [self.delegate tweetCell:self didTap:self.tweet.user];
+}
 
 
 

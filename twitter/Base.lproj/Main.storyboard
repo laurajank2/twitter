@@ -54,6 +54,22 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="XDE-g2-5cF">
+            <objects>
+                <viewController id="Dea-tX-wqi" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2iU-y3-XN7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="aFC-5I-4SY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="c0g-yx-P6d"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NNo-tq-12e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1659" y="-818"/>
+        </scene>
         <!--Home Timeline-->
         <scene sceneID="1Tv-nE-1AW">
             <objects>
@@ -79,10 +95,14 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hb9-Y8-aA0">
                                                     <rect key="frame" x="20" y="10" width="75" height="75"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="6gr-EX-xuM"/>
                                                         <constraint firstAttribute="height" constant="75" id="xui-nT-dIp"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="Loo-F2-cb9" appends="YES" id="HMt-Bv-Moq"/>
+                                                    </connections>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDC-VQ-NN2">
                                                     <rect key="frame" x="103" y="10" width="83" height="24"/>
@@ -138,7 +158,7 @@
                                                         <action selector="didTapReTweet:" destination="NHR-mv-bmw" eventType="touchUpInside" id="jMy-xD-2gg"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQS-Ze-QLq">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQS-Ze-QLq" customClass="textview">
                                                     <rect key="frame" x="103" y="42" width="280" height="101.5"/>
                                                     <string key="text">warning: Auto Layout Localization: Fixed leading and trailing constraints may cause clipping, one of them should have a constant ≥ standard space.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -224,8 +244,15 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="iKd-OP-yS2" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="Loo-F2-cb9">
+                    <connections>
+                        <action selector="didTapUserProfile:" destination="iKd-OP-yS2" id="y1c-1A-Id3"/>
+                        <segue destination="Dea-tX-wqi" kind="show" identifier="profileSegue" id="b7V-00-epC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1659.4202898550725" y="36.160714285714285"/>
+            <point key="canvasLocation" x="1658" y="36"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="6ho-LI-Vbv">

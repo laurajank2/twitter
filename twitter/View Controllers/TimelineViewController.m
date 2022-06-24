@@ -10,6 +10,7 @@
 #import "APIManager.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "ProfileViewController.h"
 #import "TweetCell.h"
 #import "Tweet.h"
 #import "UIImageView+AFNetworking.h"
@@ -77,7 +78,7 @@
     [cell.likeButton setTitle:numLiked forState:UIControlStateNormal];
     NSString *numreTweet = [NSString stringWithFormat:@"%i", cell.tweet.retweetCount];
     [cell.retweetButton setTitle:numreTweet forState:UIControlStateNormal];
-    
+    cell.delegate = self;
     return cell;
 }
 
@@ -135,13 +136,18 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    if([sender isKindOfClass:[TweetCell class]]) {
+    if ([[segue identifier] isEqualToString:@"showProfile"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        ProfileViewController *profileVC = [ segue destinationViewController];
+        profileVC.tweet = self.arrayOfTweets[indexPath.row];
+        NSLog(@"@%@", profileVC.tweet.idStr);
+    } else if([sender isKindOfClass:[TweetCell class]]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         DetailViewController *detailVC = [ segue destinationViewController];
         detailVC.tweet = self.arrayOfTweets[indexPath.row];
         NSLog(@"@%@", detailVC.tweet.idStr);
         detailVC.delegate = self;
-    } else if ([sender isKindOfClass:[UIBarButtonItem class]]) {
+    }  else if ([sender isKindOfClass:[UIBarButtonItem class]]) {
         UINavigationController *navigationController = [segue destinationViewController];
         //below didn't work to fix translucent
 //        [navigationController.navigationBar  setTranslucent:NO];
@@ -152,7 +158,12 @@
     }
 }
 
-
+- (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
+    // TODO: Perform segue to profile view controller
+    NSLog(@"did tap");
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
+    NSLog(@"did tap");
+}
 
 - (IBAction)didTapLogout:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
