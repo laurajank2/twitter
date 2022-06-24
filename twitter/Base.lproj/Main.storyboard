@@ -123,7 +123,7 @@
                                                     <buttonConfiguration key="configuration" style="plain" image="message-icon" title=""/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-hm-uo2">
-                                                    <rect key="frame" x="209" y="149" width="106" height="44"/>
+                                                    <rect key="frame" x="209" y="156.5" width="106" height="44"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="favor-icon" title="likeNum"/>
                                                     <connections>
@@ -131,7 +131,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tx9-Wy-nH0">
-                                                    <rect key="frame" x="96" y="149" width="98" height="44"/>
+                                                    <rect key="frame" x="96" y="153.5" width="98" height="49.5"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="retweet-icon" title="reNum"/>
                                                     <connections>
@@ -139,7 +139,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQS-Ze-QLq">
-                                                    <rect key="frame" x="103" y="42" width="280" height="97"/>
+                                                    <rect key="frame" x="103" y="42" width="280" height="101.5"/>
                                                     <string key="text">warning: Auto Layout Localization: Fixed leading and trailing constraints may cause clipping, one of them should have a constant ≥ standard space.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -156,7 +156,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="yd5-Pv-gSD" secondAttribute="trailing" constant="30" id="Jiu-w4-UZ5"/>
                                                 <constraint firstItem="yuZ-hm-uo2" firstAttribute="leading" secondItem="tx9-Wy-nH0" secondAttribute="trailing" priority="997" constant="15" id="NZm-fv-BFb"/>
                                                 <constraint firstItem="tx9-Wy-nH0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X4d-0i-Tzz" secondAttribute="trailing" constant="15" id="Oxw-AB-80K"/>
-                                                <constraint firstItem="X4d-0i-Tzz" firstAttribute="top" secondItem="OQS-Ze-QLq" secondAttribute="bottom" constant="10" id="P6h-zx-YX7"/>
+                                                <constraint firstItem="X4d-0i-Tzz" firstAttribute="top" secondItem="OQS-Ze-QLq" secondAttribute="bottom" constant="20" id="P6h-zx-YX7"/>
                                                 <constraint firstItem="yuZ-hm-uo2" firstAttribute="centerY" secondItem="tx9-Wy-nH0" secondAttribute="centerY" id="R4e-ec-67g"/>
                                                 <constraint firstItem="Hb9-Y8-aA0" firstAttribute="top" secondItem="1Ya-CB-gch" secondAttribute="top" constant="10" id="S0Q-XH-z3F"/>
                                                 <constraint firstItem="HDC-VQ-NN2" firstAttribute="top" secondItem="Hb9-Y8-aA0" secondAttribute="top" id="VEV-o5-W2l"/>
