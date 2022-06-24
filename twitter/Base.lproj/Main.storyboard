@@ -57,7 +57,7 @@
         <!--Profile View Controller-->
         <scene sceneID="XDE-g2-5cF">
             <objects>
-                <viewController id="Dea-tX-wqi" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="Dea-tX-wqi" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2iU-y3-XN7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,7 +110,7 @@
                                                         <constraint firstAttribute="height" constant="24" id="OA2-bY-e7d"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="83" id="eya-h6-LYT"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
