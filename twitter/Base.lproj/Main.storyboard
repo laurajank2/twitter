@@ -57,17 +57,17 @@
         <!--Home Timeline-->
         <scene sceneID="1Tv-nE-1AW">
             <objects>
-                <viewController storyboardIdentifier="TimelineViewController" extendedLayoutIncludesOpaqueBars="YES" id="Lbl-k5-U4i" customClass="TimelineViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimelineViewController" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="fullScreen" id="Lbl-k5-U4i" customClass="TimelineViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bdH-tK-EYk"/>
                         <viewControllerLayoutGuide type="bottom" id="pGj-sa-aq5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qax-2F-Vhk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uPJ-0i-ONq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="32" width="414" height="832"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="203" id="NHR-mv-bmw" customClass="TweetCell">
@@ -195,18 +195,16 @@
                         <constraints>
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="centerX" secondItem="qax-2F-Vhk" secondAttribute="centerX" id="BPf-Nh-grJ"/>
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="top" secondItem="qax-2F-Vhk" secondAttribute="topMargin" constant="-56" id="GbC-cW-TrA"/>
-                            <constraint firstItem="uPJ-0i-ONq" firstAttribute="top" secondItem="qax-2F-Vhk" secondAttribute="top" id="WVP-4q-lNe"/>
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="centerY" secondItem="qax-2F-Vhk" secondAttribute="centerY" id="YB0-BC-xDf"/>
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="leading" secondItem="ugE-Ul-H9I" secondAttribute="leading" id="lGE-ns-gph"/>
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="trailing" secondItem="ugE-Ul-H9I" secondAttribute="trailing" id="ob9-Jg-ghK"/>
                             <constraint firstItem="uPJ-0i-ONq" firstAttribute="leading" secondItem="ugE-Ul-H9I" secondAttribute="leading" id="onN-Vi-iAx"/>
-                            <constraint firstItem="uPJ-0i-ONq" firstAttribute="bottom" secondItem="ugE-Ul-H9I" secondAttribute="bottom" id="wP2-gq-hwk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="ZA4-7i-3Cg">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="qdG-Fm-AZQ">
-                                <rect key="frame" x="20" y="11" width="83" height="34.5"/>
+                                <rect key="frame" x="20" y="5" width="83" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Logout"/>
@@ -411,10 +409,11 @@
         <!--Navigation Controller-->
         <scene sceneID="WUT-Ke-VeR">
             <objects>
-                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="FTQ-G1-N2b" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="FTQ-G1-N2b" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="qQ1-KQ-6eW"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ytz-Ev-cUB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
