@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *composeTweet;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *closeButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *tweetButton;
+@property (weak, nonatomic) IBOutlet UILabel *tweetStatus;
 
 @end
 
@@ -30,7 +31,29 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];////UIImageNamed:@"transparent.png"
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.composeTweet.delegate = self;
 
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    // TODO: Check the proposed new text character count
+    // Set the max character limit
+    int characterLimit = 281;
+
+    // Construct what the new text would be if we allowed the user's latest edit
+    NSString *newText = [self.composeTweet.text stringByReplacingCharactersInRange:range withString:text];
+
+    // TODO: Update character count label
+
+    // Should the new text should be allowed? True/False
+    if( newText.length == characterLimit){
+        self.tweetStatus.text = @"Tweet is at character limit!";
+    } else {
+        self.tweetStatus.text = @"Make your tweet!";
+    }
+    return newText.length < characterLimit;
+    
+    // TODO: Allow or disallow the new text
 }
 
 
