@@ -49,7 +49,9 @@
     if( newText.length == characterLimit){
         self.tweetStatus.text = @"Tweet is at character limit!";
     } else {
-        self.tweetStatus.text = @"Make your tweet!";
+        NSString *strCurrText = [NSString stringWithFormat:@"%d",newText.length];
+        NSString *status = [NSString stringWithFormat:@"%@%@%@", @"You have ", strCurrText, @" out of 280 characters"];
+        self.tweetStatus.text = status;
     }
     return newText.length < characterLimit;
     
